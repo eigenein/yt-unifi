@@ -12,7 +12,7 @@ env:
 jobs:
   macos:
     name: 🍏 MacOS
-    runs-on: flyci-macos-large-latest-m1
+    runs-on: flyci-macos-large-latest-m2
 
     permissions:
       contents: read
