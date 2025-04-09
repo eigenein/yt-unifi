@@ -12,7 +12,7 @@ env:
 jobs:
   macos:
     name: 🍏 MacOS
-    runs-on: macos-latest
+    runs-on: macos-latest-large
 
     permissions:
       contents: read
