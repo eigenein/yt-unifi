@@ -8,5 +8,11 @@ UniFi Protect camera streaming to YouTube.
 ## Usage
 
 ```shell
-docker run --detach --restart=unless-stopped -e "SOURCE_URL=rtsps://192.168.1.1:7441/<Camera key>" -e "TARGET_URL=rtmp://a.rtmp.youtube.com/live2/<YouTube key>" --name="<Container name>" ghcr.io/eigenein/yt-unifi:edge
+docker run \
+  --detach \
+  --restart=unless-stopped \
+  -e "SOURCE_URL=rtsps://192.168.1.1:7441/<Camera key>" \
+  -e "TARGET_URL=rtmp://a.rtmp.youtube.com/live2/<YouTube key>" \
+  --name="<Container name>" \
+  ghcr.io/eigenein/yt-unifi:edge
 ```
