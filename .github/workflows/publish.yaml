@@ -11,8 +11,8 @@ env:
 
 jobs:
   macos:
-    name: 🍏 MacOS
-    runs-on: flyci-macos-large-latest-m2
+    name: ✨ Build and Publish
+    runs-on: ubuntu-latest
 
     permissions:
       contents: read
@@ -23,6 +23,17 @@ jobs:
     steps:
       - name: 📥 Checkout
         uses: actions/checkout@v4
+
+      - name: 🐬 Set up Docker
+        uses: docker/setup-docker-action@v4
+        with:
+          daemon-config: |
+            {
+              "debug": true,
+              "features": {
+                "containerd-snapshotter": true
+              }
+            }
 
       - name: 🐬 Docker meta
         id: meta
@@ -43,6 +54,7 @@ jobs:
       - name: 🚧 Build and push
         uses: docker/build-push-action@v6
         with:
+          platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           annotations: ${{ steps.meta.outputs.annotations }}
